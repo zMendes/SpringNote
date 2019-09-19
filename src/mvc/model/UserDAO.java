@@ -6,11 +6,15 @@ import java.util.List;
 
 public class UserDAO {
 	private Connection connection = null;
-
+	
+	String url=System.getenv("mysql_url");
+	String user=System.getenv("mysql_user");
+	String password=System.getenv("mysql_password");
+	
 	public UserDAO() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost/meus_dados", "root", "Leonardo@123");
+			connection = DriverManager.getConnection(url, user, password);
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
